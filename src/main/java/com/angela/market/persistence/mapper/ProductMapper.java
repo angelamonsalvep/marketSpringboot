@@ -2,6 +2,7 @@ package com.angela.market.persistence.mapper;
 
 import com.angela.market.domain.Product;
 import com.angela.market.persistence.entity.Producto;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -12,7 +13,7 @@ import java.util.List;
 public interface ProductMapper {
 
     @Mappings({
-            @Mapping(source = "idproducto", target = "productId"),
+            @Mapping(source = "idProducto", target = "productId"),
             @Mapping(source = "nombre", target = "name"),
             @Mapping(source = "idCategoria", target = "categoryId"),
             @Mapping(source = "precioventa", target = "price"),
@@ -24,6 +25,7 @@ public interface ProductMapper {
 
     List<Product> toproducts(List<Producto> productos);
 
+    @InheritInverseConfiguration
     @Mapping(target = "codigoBarras", ignore = true)
     Producto toProducto(Product product);
 
